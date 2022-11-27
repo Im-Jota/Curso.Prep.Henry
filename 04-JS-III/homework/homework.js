@@ -27,14 +27,7 @@ function incrementarPorUno(array) {
   // Aumenta cada entero por 1
   // y devuelve el array
   // Tu código:
-    /*
-    let d = 0;
-    for(ind in array){
-        d = array[ind] + 1;
-        array.fill(d, ind, ind+1);
-    }
-    return array;
-    */
+    return array.map(da => da + 1);
 }
 
 
@@ -119,7 +112,17 @@ function multiplicarArgumentos() {
   // Usa la palabra clave `arguments` para multiplicar todos los argumentos y devolver el producto
   // Si no se pasan argumentos devuelve 0. Si se pasa un argumento, simplemente devuélvelo
   // Escribe tu código aquí:
-
+    let mul = 1;
+    if (arguments.length == 0){
+        return 0;
+    } else if(arguments.length == 1){
+        return arguments[0];
+    } else {
+        for(arg of arguments){
+            mul *= arg;
+        }
+    }
+    return mul;
 }
 
 
@@ -142,8 +145,16 @@ function diaDeLaSemana(numeroDeDia) {
   //Suponga que los días de la semana se codifican como 1 = Domingo, 2 = Lunes y así sucesivamente. 
   //Realiza una función que dado el número del día de la semana, retorne: Es fin de semana
   //si el día corresponde a Sábado o Domingo y “Es dia Laboral” en caso contrario. 
-  //Escribe tu código aquí   
-  
+  //Escribe tu código aquí
+    function week(numeroDeDia){
+        if(numeroDeDia >= 2 && numeroDeDia <= 6){
+            return 'Es dia Laboral';
+        } else {
+            return 'Es fin de semana';
+        }
+    }
+    
+    return week(numeroDeDia);
 } 
 
 
@@ -205,6 +216,12 @@ function mesesDelAño(array) {
   // "Enero", "Marzo" y "Noviembre", guardarlo en nuevo array y retornarlo.
   //Si alguno de los meses no está, devolver: "No se encontraron los meses pedidos"
   // Tu código:
+    let m = ['Enero','Marzo','Noviembre'];
+    let newArray = array.filter(function (d) {
+        return m.includes(d);
+    })
+    resultado = newArray.length == m.length ? newArray : 'No se encontraron los meses pedidos';
+    return resultado;
 }
 
 
@@ -225,6 +242,18 @@ function breakStatement(numero) {
   //devolver: "Se interrumpió la ejecución"
   //Pista: usá el statement 'break'
   // Tu código:
+    let count = 0;
+    let array = [];
+    while(count < 10){
+        count++;
+        let num = numero +=2;
+        array.push(num);
+        if(count == num){
+            return 'Se interrumpió la ejecución'
+            break;
+        }
+    }
+    return array;
 }
 
 
@@ -235,6 +264,18 @@ function continueStatement(numero) {
   //Cuando el número de iteraciones alcance el valor 5, no se suma en ese caso y se continua con la siguiente iteración
   //Pista: usá el statement 'continue'
   // Tu código:
+    let count = 0;
+    let array = [];
+    while(count < 10){
+        count ++;
+        if(count !== 5){
+            let num = numero +=2;
+            array.push(num);
+        } else {
+            continue;
+        }
+    }
+    return array;
 }
 
 
